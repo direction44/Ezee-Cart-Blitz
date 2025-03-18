@@ -1,10 +1,14 @@
 import React from 'react'
 
 function CartButton() {
+  let items=["shirt","tshirt"]
+  let bgColorName=items.length===0?"none":"white"
   return (
-    <h2>
-      cart button
-    </h2>
+    <button type='button' className='btn btn-outline-success d-md-block mt3 mt-lg-0'>
+      <i className='bi bi-cart3'></i>
+      <span className='mx-2'>Checkout</span>
+      <span className={`badge text-success bg-${bgColorName}`}>{items.length}</span>
+    </button>
   )
 }
 
