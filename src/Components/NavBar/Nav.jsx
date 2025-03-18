@@ -13,8 +13,8 @@ function Nav() {
           </button>
           <div className='collapse navbar-collapse justify-content-end' id='navbarSupportedContent'>
               <CategorySelector/>
-            {/* <SearchBar/>
-            <CartButton/> */}
+            <SearchBar/>
+            {/* <CsartButton/> */}
             </div>
         </div>
     </nav>
