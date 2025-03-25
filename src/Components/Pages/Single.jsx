@@ -5,7 +5,6 @@ function Single() {
   const {id}=useParams()
     const product=data.find((product)=>product.id=== +id)
     const imagesPath="/images/"+product.id+".jpg"
-    console.log(imagesPath,"**************")
     return (
       <div className='row'>
         <div className='col-6'>

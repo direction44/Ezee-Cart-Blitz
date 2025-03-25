@@ -1,9 +1,10 @@
 import React from 'react'
+import NoContent from '../extra/NoContent'
 
 function Cart() {
   return (
     <h1>
-      Cart
+      <NoContent text="Nothing in your cart" btnText="Browse Product"/>
     </h1>
   )
 }
