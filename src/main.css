@@ -9,3 +9,16 @@
     height: 140px;
     object-fit: contain;
 }
+#single{
+    max-width: 1000px;
+    min-height: 500px;
+}
+
+#single img{
+    max-height: 500px;
+    object-fit: contain;
+}
+
+#single button{
+    width: 180px;
+}
