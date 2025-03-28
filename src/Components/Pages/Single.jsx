@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import data from '../../data'
 import ProductButton from '../Products/ProductButton'
 import Line from '../extra/Line'
+import Products from "../Products/Products"
 function Single() {
   const {id}=useParams()
     const product=data.find((product)=>product.id=== +id)
@@ -21,6 +22,8 @@ function Single() {
           <ProductButton/>
         </div>
         <Line/>
+        <h2 className='text-white my-4 text-center'>Similar Products Like This</h2>
+        <Products products={data.slice(0,4)}/>
       </div>        
       )
 }
