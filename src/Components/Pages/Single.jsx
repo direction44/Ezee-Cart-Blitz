@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 import data from '../../data'
 import ProductButton from '../Products/ProductButton'
+import Line from '../extra/Line'
 function Single() {
   const {id}=useParams()
     const product=data.find((product)=>product.id=== +id)
@@ -19,6 +20,7 @@ function Single() {
           </p>
           <ProductButton/>
         </div>
+        <Line/>
       </div>        
       )
 }

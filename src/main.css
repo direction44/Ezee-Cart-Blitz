@@ -22,3 +22,8 @@
 #single button{
     width: 180px;
 }
+
+.line{
+    opacity: 0.7;
+    height: 5px !important;
+}
