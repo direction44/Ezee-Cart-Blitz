@@ -2,6 +2,7 @@ import React from 'react'
 import NoContent from '../extra/NoContent'
 import data from '../../data'
 import CartItem from '../cart/CartItem'
+import CartNumbers from '../cart/CartNumbers'
 function Cart() {
   const cartItem=data.slice(0,2)
   if(cartItem.length===0)
@@ -25,6 +26,7 @@ function Cart() {
           })
         }
         </ul>
+        <CartNumbers/>
       </div>
     </div>
    </div>
