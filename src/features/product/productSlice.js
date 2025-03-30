@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data  from "../../data"
+import { uniq } from "lodash";
+const categories=uniq(data.map((product)=>{
+    return product.category
+})).sort()
+const defaultCategory="All"
 const initialState={
     products:data,
-    productsFromSearch:data
+    productsFromSearch:data,
+    categories:[defaultCategory,...categories]
 }
-
 const productSlice=createSlice({
     name:"products",
     initialState,

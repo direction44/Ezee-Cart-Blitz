@@ -1,7 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function CategorySelector() {
-  let Categories=["All","Scalves","Hats","Jackets","Socks"]
+  let Categories=useSelector((state)=>state.products.categories)
+  
   let title="All"
   return (
     <div className='dropdown mb-3 mb-lg-0'>
