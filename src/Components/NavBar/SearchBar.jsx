@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import { setSearchTerm } from '../../features/product/productSlice'
 function SearchBar() {
- let[text,setText]= useState("")
+ const {searchTerm}=useSelector((state)=>state.products)
+ const dispatch=useDispatch()
   const handleSubmit=(e)=>{
     e.preventDefault()
   }
 
   const handleChnage=(e)=>{
-    setText(e.target.value)
+    dispatch(setSearchTerm(e.target.value))
   }
-  console.log(text)
   return (
    <form className='d-flex ms-md-0 ms-lg-3' onSubmit={handleSubmit}>
-    <input type="search" name="" id=""  placeholder='search products' className='form-control ms-md-auto me-2' onChange={handleChnage} value={text}/>
+    <input type="search" name="" id=""  placeholder='search products' className='form-control ms-md-auto me-2' onChange={handleChnage} value={searchTerm}/>
    </form>
   )
 }

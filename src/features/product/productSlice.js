@@ -11,20 +11,20 @@ const initialState={
     categories:[defaultCategory,...categories],
     selectedCategory:defaultCategory,
     single:data[0],
-    singleSimilarProduct:data.slice(0,4)
+    singleSimilarProduct:data.slice(0,4),
+    searchTerm:""
 }
 const productSlice=createSlice({
     name:"products",
     initialState,
     reducers:{
-        addProduct:(state,action)=>{
-            state.products.push(action.payload)
-        },
-        clearProduct:(state)=>{
-            state.products=[]
+        setSearchTerm:(state,action)=>{
+                const{payload:searchTerm}=action
+                state.searchTerm=searchTerm
+                console.log("searchTerm",searchTerm)
         }
     }
 })
 
-export const{addProduct,clearProduct}=productSlice.actions;
+export const{setSearchTerm}=productSlice.actions;
 export default productSlice.reducer
