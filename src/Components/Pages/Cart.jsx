@@ -1,12 +1,13 @@
 import React from 'react'
 import NoContent from '../extra/NoContent'
-import data from '../../data'
 import CartItem from '../cart/CartItem'
 import CartNumbers from '../cart/CartNumbers'
 import CartBuyButton from '../cart/CartBuyButton'
+import { useSelector } from 'react-redux'
 function Cart() {
-  const cartItem=data.slice(0,2)
-  if(cartItem.length===0)
+  const {cartItems}=useSelector((state)=>state.cart)
+  // const cartItems=data.slice(0,2)
+  if(cartItems.length===0)
   {
     return (
   
@@ -22,7 +23,7 @@ function Cart() {
         <h4 className='mb-3 px-1'>Cart</h4>
         <ul className='list-group mb-3'>
         {
-          cartItem.map((item)=>{
+          cartItems.map((item)=>{
             return <CartItem key={item.id} item={item}/>
           })
         }
