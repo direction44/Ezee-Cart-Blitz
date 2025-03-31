@@ -7,7 +7,7 @@ function Product(props) {
   const Nav=useNavigate()
   const handleClick=()=>
   {
-      Nav(`Single/${product.id}`)
+      Nav(`/Single/${product.id}`)
   }
   return (
     <div className='col'>

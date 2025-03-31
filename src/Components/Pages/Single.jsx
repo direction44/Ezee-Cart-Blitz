@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import data from '../../data'
 import ProductButton from '../Products/ProductButton'
 import Line from '../extra/Line'
 import Products from "../Products/Products"
-import { useSelector } from 'react-redux'
-
+import { useSelector,useDispatch } from 'react-redux'
+import { setSingleProduct } from '../../features/product/productSlice'
 function Single() {
   const{single,singleSimilarProduct}=useSelector((state)=>state.products)
-  // const {id}=useParams()
-  //   const product=data.find((product)=>product.id=== +id)
+  const dispatch=useDispatch()
+  const {id}=useParams()
+  useEffect(()=>{
+    dispatch(setSingleProduct(id))
+  },[id])
     const imagesPath="/images/"+single.id+".jpg"
     return (
       <div id='single' className='row justify-content-center align-items-center text-white mx-auto'>

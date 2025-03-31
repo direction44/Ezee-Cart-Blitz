@@ -11,7 +11,7 @@ const initialState={
     productsFromSearch:data,
     categories:[defaultCategory,...categories],
     selectedCategory:defaultCategory,
-    single:data[0],
+    single:"",
     singleSimilarProduct:data.slice(0,4),
     searchTerm:""
 }
@@ -40,9 +40,14 @@ const productSlice=createSlice({
             {
                 state.productsFromSearch=state.products.filter((p)=>p.category==selectedCategory)
             }
+        },
+        setSingleProduct:(state,action)=>{
+            const {payload:id}=action
+            state.single=state.products.find((p)=>p.id===+id)
+            state.singleSimilarProduct=state.products.filter((p)=>(state.single.category===p.category&&state.single.id!==p.id))
         }
     }
 })
 
-export const{setSearchTerm,setSelectedCategory}=productSlice.actions;
+export const{setSearchTerm,setSelectedCategory,setSingleProduct}=productSlice.actions;
 export default productSlice.reducer
