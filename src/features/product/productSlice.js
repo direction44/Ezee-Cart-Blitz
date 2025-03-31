@@ -32,6 +32,14 @@ const productSlice=createSlice({
             const{payload:selectedCategory}=action
             state.selectedCategory=selectedCategory
             console.log(selectedCategory)
+            if(selectedCategory===defaultCategory)
+            {
+                state.productsFromSearch=state.products
+            }
+            else
+            {
+                state.productsFromSearch=state.products.filter((p)=>p.category==selectedCategory)
+            }
         }
     }
 })
