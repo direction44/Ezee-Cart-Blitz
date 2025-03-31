@@ -27,9 +27,14 @@ const productSlice=createSlice({
                     p.setScore=stringSimilarity(`${p.name} ${p.category}`,state.searchTerm)
                 })
                 state.productsFromSearch=sortBy(state.productsFromSearch,"setScore").reverse()
+        },
+        setSelectedCategory:(state,action)=>{
+            const{payload:selectedCategory}=action
+            state.selectedCategory=selectedCategory
+            console.log(selectedCategory)
         }
     }
 })
 
-export const{setSearchTerm}=productSlice.actions;
+export const{setSearchTerm,setSelectedCategory}=productSlice.actions;
 export default productSlice.reducer
