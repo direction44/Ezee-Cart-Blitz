@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data  from "../../data"
-import { uniq } from "lodash";
+import { uniq,sortBy } from "lodash";
+import stringSimilarity from "string-similarity-js";
 const categories=uniq(data.map((product)=>{
     return product.category
 })).sort()
@@ -22,6 +23,10 @@ const productSlice=createSlice({
                 const{payload:searchTerm}=action
                 state.searchTerm=searchTerm
                 console.log("searchTerm",searchTerm)
+                state.productsFromSearch.forEach((p)=>{
+                    p.setScore=stringSimilarity(`${p.name} ${p.category}`,state.searchTerm)
+                })
+                state.productsFromSearch=sortBy(state.productsFromSearch,"setScore").reverse()
         }
     }
 })
