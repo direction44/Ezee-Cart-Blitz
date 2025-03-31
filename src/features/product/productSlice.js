@@ -8,7 +8,10 @@ const defaultCategory="All"
 const initialState={
     products:data,
     productsFromSearch:data,
-    categories:[defaultCategory,...categories]
+    categories:[defaultCategory,...categories],
+    selectedCategory:defaultCategory,
+    single:data[0],
+    singleSimilarProduct:data.slice(0,4)
 }
 const productSlice=createSlice({
     name:"products",
