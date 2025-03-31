@@ -21,15 +21,18 @@ const productSlice=createSlice({
     reducers:{
         setSearchTerm:(state,action)=>{
                 const{payload:searchTerm}=action
+                state.productsFromSearch=state.products
                 state.searchTerm=searchTerm
-                console.log("searchTerm",searchTerm)
-                state.productsFromSearch.forEach((p)=>{
-                    p.setScore=stringSimilarity(`${p.name} ${p.category}`,state.searchTerm)
-                })
-                state.productsFromSearch=sortBy(state.productsFromSearch,"setScore").reverse()
+                if(state.searchTerm.length>0){
+                    state.productsFromSearch.forEach((p)=>{
+                        p.setScore=stringSimilarity(`${p.name} ${p.category}`,state.searchTerm)
+                    })
+                    state.productsFromSearch=sortBy(state.productsFromSearch,"setScore").reverse()
+                }
         },
         setSelectedCategory:(state,action)=>{
             const{payload:selectedCategory}=action
+            state.searchTerm=""
             state.selectedCategory=selectedCategory
             console.log(selectedCategory)
             if(selectedCategory===defaultCategory)
