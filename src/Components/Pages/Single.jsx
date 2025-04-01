@@ -25,7 +25,7 @@ function Single() {
           <p className='lead'>
             {single.description}
           </p>
-          <ProductButton/>
+          <ProductButton product={single}/>
         </div>
         <Line/>
         <h2 className='text-white my-4 text-center'>Similar Products Like This</h2>

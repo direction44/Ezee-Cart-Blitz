@@ -6,7 +6,6 @@ import CartBuyButton from '../cart/CartBuyButton'
 import { useSelector } from 'react-redux'
 function Cart() {
   const {cartItems}=useSelector((state)=>state.cart)
-  // const cartItems=data.slice(0,2)
   if(cartItems.length===0)
   {
     return (

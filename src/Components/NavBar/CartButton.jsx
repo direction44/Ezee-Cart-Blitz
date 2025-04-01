@@ -1,7 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 function CartButton() {
-  let items=["shirt","tshirt"]
+  const {cartItems}=useSelector((state)=>state.cart)
+  let items=cartItems
   const Nav=useNavigate()
   let bgColorName=items.length===0?"none":"white"
   const handleCartNaviagtion=()=>{

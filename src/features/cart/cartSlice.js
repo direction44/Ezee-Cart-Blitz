@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../data"
 const initialState={
-    cartItems:data.slice(0,3),
+    cartItems:[],
     cartNumber:{subtotal:10,shipping:10,tax:4,total:244}
 }
 
@@ -10,7 +10,8 @@ const cartSlice=createSlice({
     initialState,
     reducers:{
         addToCart:(state,action)=>{
-            //write code to add item in cart
+            const{payload:item}=action
+            state.cartItems.push({...item,quantity:1})
         },
         removeFromCart:(state,action)=>{
               //write code to delete item from cart            
