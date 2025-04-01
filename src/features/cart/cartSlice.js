@@ -14,7 +14,10 @@ const cartSlice=createSlice({
             state.cartItems.push({...item,quantity:1})
         },
         removeFromCart:(state,action)=>{
-              //write code to delete item from cart            
+            const {payload:item}=action
+            // state.cartItems=state.cartItems.filter((p)=>p.id!=item.id)
+            let index=state.cartItems.findIndex((product)=>product.id===item.id) 
+            state.cartItems.splice(index,1)        
         }
     }
 })
