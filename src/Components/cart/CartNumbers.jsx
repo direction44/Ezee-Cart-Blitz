@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import Price from '../extra/Price'
 
 function CartNumbers() {
     const {cartNumber}=useSelector((state)=>state.cart)
@@ -12,7 +13,7 @@ function CartNumbers() {
                     return(
                         <li className='list-group-item d-flex justify-content-between'>
                             <span>{item.title}</span>
-                            <span className='text-muted'>{item.price}</span>
+                            <span className='text-muted'><Price value={item.price} decimals={2}/></span>
                         </li>
                     )
                 })

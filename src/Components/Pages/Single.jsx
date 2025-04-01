@@ -6,6 +6,7 @@ import Line from '../extra/Line'
 import Products from "../Products/Products"
 import { useSelector,useDispatch } from 'react-redux'
 import { setSingleProduct } from '../../features/product/productSlice'
+import Price from '../extra/Price'
 function Single() {
   const{single,singleSimilarProduct}=useSelector((state)=>state.products)
   const dispatch=useDispatch()
@@ -21,7 +22,7 @@ function Single() {
         </div>
         <div className='col-md-6 text-center text-md-start'>
           <h2 className='fs-1 fw-bold'>{single.name}</h2>
-          <div className='fs-5 mb-2'>{single.price}</div>
+          <div className='fs-5 mb-2'><Price value={single.price}/></div>
           <p className='lead'>
             {single.description}
           </p>
