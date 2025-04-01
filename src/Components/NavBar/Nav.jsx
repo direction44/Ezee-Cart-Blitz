@@ -3,9 +3,10 @@ import CategorySelector from './CategorySelector'
 import SearchBar from './SearchBar'
 import CartButton from './CartButton'
 import { useNavigate } from 'react-router-dom'
-
+import { useLocation } from 'react-router-dom'
 function Nav(props) {
   const Nav=useNavigate()
+  const {pathname}=useLocation()
   const handleHomeNavigation=()=>{
     Nav("/")
   }
@@ -17,8 +18,12 @@ function Nav(props) {
              <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse justify-content-end' id='navbarSupportedContent'>
-            <CategorySelector/>
-            <SearchBar/>
+            {
+              pathname==="/"&&<>
+                 <CategorySelector/>
+                 <SearchBar/>
+              </>
+            }
             <CartButton/>
             </div>
         </div>
