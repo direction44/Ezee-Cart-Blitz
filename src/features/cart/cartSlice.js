@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import data from "../../data"
 const initialState={
     cartItems:[],
-    cartNumber:{subtotal:10,shipping:10,tax:4,total:244}
+    cartNumber:{subtotal:0,shipping:0,tax:0,total:0}
 }
 
 const cartSlice=createSlice({
@@ -26,10 +26,20 @@ const cartSlice=createSlice({
             })
 
             state.cartItems=state.cartItems.filter((cartItem)=>cartItem.quantity>=1)
+        },
+        setCartNumbers:(state)=>{
+            let subtotal=0,shipping=0,tax=0,total=0
+            state.cartItems.forEach(item => {
+                subtotal+=item.quantity*item.price
+                shipping+=item.quantity*40
+            });
+            tax=(subtotal*18)/100
+            total=subtotal+tax+shipping
+            state.cartNumber={subtotal,shipping,tax,total}
         }
     }
 })
 
-export const{addToCart,removeFromCart,setQuantity}=cartSlice.actions
+export const{addToCart,removeFromCart,setQuantity,setCartNumbers}=cartSlice.actions
 
 export default cartSlice.reducer

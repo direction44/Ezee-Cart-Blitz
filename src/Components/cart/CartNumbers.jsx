@@ -1,12 +1,9 @@
 import React from 'react'
-const cartNumber={
-    Subtotal:1500.00,
-    Shipping:40.00,
-    Tax:287.82,
-    Total:1926.82
-}
+import { useSelector } from 'react-redux'
+
 function CartNumbers() {
-    const items=[{title:"Subtotal",price:cartNumber.Subtotal},{title:"Shipping",price:cartNumber.Shipping},{title:"Tax",price:cartNumber.Tax},{title:"Total",price:cartNumber.Total}]
+    const {cartNumber}=useSelector((state)=>state.cart)
+    const items=[{title:"Subtotal",price:cartNumber.subtotal},{title:"Shipping",price:cartNumber.shipping},{title:"Tax",price:cartNumber.tax},{title:"Total",price:cartNumber.total}]
   return (
     <div id='cart-numbers'>
         <ul className='list-group mb-3'>
